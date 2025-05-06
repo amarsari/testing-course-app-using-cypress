@@ -15,4 +15,26 @@ describe('home page', () => {
       cy.get("dt").eq(2).contains("Free and Open Source")
     })
   })
+
+  context("Courses section testing each option", () => {
+    it("Lesson Progress Link 0", () => {
+      cy.getByData("lesson-progress-link-0").eq(0).click()
+      cy.location("pathname").should("eq", "/testing-your-first-application/app-install-and-overview")
+    })
+
+    it("Lesson Progress Link 1", () => {
+      cy.getByData("lesson-progress-link-1").eq(0).click()
+      cy.location("pathname").should("eq", "/testing-your-first-application/installing-cypress-and-writing-our-first-test")
+    })
+
+    it("Lesson Progress Link 2", () => {
+      cy.getByData("lesson-progress-link-2").eq(0).click()
+      cy.location("pathname").should("eq", "/testing-your-first-application/setting-up-data-before-each-test")
+    })
+
+    it("Course: Testing Your First Next.js Application", () => {
+      cy.getByData("course-0").find("a").contains("Get started").click()
+      cy.location("pathname").should("eq", "/testing-your-first-application")
+    })
+  })
 })
